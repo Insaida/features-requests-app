@@ -1,6 +1,7 @@
-from flask import Flask
 import os
-
+from os.path import dirname, join
+from flask import Flask
+from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,14 +25,11 @@ def get_env_variable(name, default=None):
 
 
 
-
+env_file_path = join(dirname(__file__), '.env')
+load_dotenv(env_file_path)
 
 
 app = Flask(__name__)
 
 
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+app.run(debug=True)
