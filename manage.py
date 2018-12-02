@@ -31,7 +31,7 @@ if __name__ == "__main__":
     args = app_parser.parse_args()
 
     if args.command == "runserver":
-        app.run()
+        app.run(debug=True)
     elif args.command == "create_db":
         models.db.create_all()
     elif args.command == "init_db":

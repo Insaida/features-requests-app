@@ -1,4 +1,4 @@
-from .featurerequests import get_env_variable
+from featurerequests import get_env_variable
 
 
 class BaseConfiguration(object):
@@ -17,7 +17,6 @@ class ProductionConfiguration(BaseConfiguration):
 class DevelopmentConfiguration(BaseConfiguration):
     DEBUG = True
     SQLALCHEMY_ECHO = True
-
 
 class TestingConfiguration(DevelopmentConfiguration):
     TESTING = True
