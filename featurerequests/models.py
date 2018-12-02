@@ -1,4 +1,4 @@
-from feature_requests import app
+from featurerequests import app
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -46,10 +46,10 @@ Returns:
 
 class Client(db.Model):
     """[summary]
-    
+
     Arguments:
         db {[type]} -- [description]
-    
+
     Returns:
         [type] -- [description]
     """

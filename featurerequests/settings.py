@@ -1,4 +1,5 @@
-from .feature_requests import get_env_variable
+from .featurerequests import get_env_variable
+
 
 class BaseConfiguration(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
