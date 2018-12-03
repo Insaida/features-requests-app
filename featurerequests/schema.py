@@ -21,4 +21,12 @@ class FeaturesRequestSchema(Schema):
         load_from="product_area"
     )
 
-    
+
+class ClientsSchema(Schema):
+        id = fields.Int(dump_only=True)
+        name = fields.Str(dump_only=True)
+
+
+class ProductAreaSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str(dump_only=True)

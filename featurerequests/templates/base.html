@@ -9,7 +9,16 @@
     <script src="main.js"></script>
 </head>
 <body>
+    
     <p>Test Britecore</p>
+
+
+    {% block script %}
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/featurerequestapp.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/knockout-3.4.2.js') }}"></script>
+
+    {% endblock script%}
 </body>
 </html>
 
