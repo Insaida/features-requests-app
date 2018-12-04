@@ -1,6 +1,7 @@
 from featurerequests import get_env_variable
 
-
+from dotenv import load_dotenv
+load_dotenv()
 class BaseConfiguration(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = get_env_variable(
