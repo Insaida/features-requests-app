@@ -34,11 +34,11 @@ if __name__ == "__main__":
         app.run(debug=True)
     elif args.command == "create_db":
         models.db.create_all()
+    elif args.command == "drop_db":
+        models.db.drop_all()
     elif args.command == "init_db":
         fixture_dir_path = os.path.join('featurerequests', 'fixtures')
         for fixture in os.listdir(fixture_dir_path):
             fixture_path = os.path.join(fixture_dir_path, fixture)
-            with open(fixture_path, 'r') as loader:
-                load_fixtures(models.db, json.loads(loader.read()))
-    elif args.command == "drop_db":
-        models.db.drop_all()
+            with open(fixture_path, 'r') as infile:
+                load_fixtures(models.db, json.loads(infile.read()))

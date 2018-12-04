@@ -3,20 +3,51 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Features Request App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+
+    <title>      
+        {% block title %}Feature Requests{% endblock title %}
+    </title>
+
+
+    {% block css %}
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous", rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% endblock css %}
 </head>
 <body>
-    
-    <p>Test Britecore</p>
+    <div class="container width: 750px">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-tabs ">
+                    <li role="presentation">
+                        <a data-toggle="modal" data-target="#add_feature_requests">Request a feature</a>
+                      </li>
+                    <li role="presentation">
+                        <a href="https://github.com/insaida/features-requests-app" target="_blank">github repo</a>
+                      </li>
+                </ul>
+            </nav>
 
+            <h3 class="text-light bg-dark">Feature Requests</h3>
+        </div>
+        {% block content %}
+            {% endblock content %}
+    </div>    
 
     {% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/featurerequestapp.js') }}"></script>
     <script src="{{ url_for('static', filename='js/knockout-3.4.2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/featurerequestapp.js') }}"></script>
+
 
     {% endblock script%}
 </body>
