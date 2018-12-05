@@ -64,7 +64,7 @@ Returns:
     [type] -- [description]
 """
     id = db.Column(db.Integer, primary_key=True)
-    features_title = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     client_id = db.Column(
         db.Integer,
