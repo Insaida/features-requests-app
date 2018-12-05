@@ -129,3 +129,17 @@ def add_features_resuests():
 
     if errors:
         return jsonify({"errors": errors}), 400
+
+    fix_client_priorities(data['client_priority'])
+    feature_request = FeaturesRequest()
+    feature_request = _build_feature_request_data(feature_request, data)
+
+    db.session.add(feature_request)
+    db.session.commit()
+
+    return jsonify(
+        {
+            "message": "Created new feature request.",
+            "data": FeaturesRequestSchema().dump(feature_request)
+        }
+    ), 201
