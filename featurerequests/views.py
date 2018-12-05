@@ -8,6 +8,8 @@ from featurerequests.schema import ClientsSchema, FeaturesRequestSchema, Product
 from featurerequests.utils import fix_client_priorities
 
 from datetime import datetime
+
+
 def _build_feature_request_data(feature_request, data):
     for field in [
         "title",
@@ -34,6 +36,7 @@ def _build_feature_request_data(feature_request, data):
 def homepage():
     return render_template('index.html')
 
+
 @app.route('/api/users/', methods=('GET',))
 def get_users():
     """Fetch all users."""
@@ -59,6 +62,7 @@ def get_clients():
     clients_schema = ClientsSchema()
     result = clients_schema.dump(clients, many=True)
     return jsonify({'clients': result.data})
+
 
 @app.route("/api/feature_requests/", methods=["GET"])
 def feature_requests_get_method():
@@ -116,7 +120,6 @@ def fetch_feature_request_by_id(id=None):
     ), 200
 
 
-
 @app.route("/api/feature_requests/add/", methods=["POST"])
 def add_features_resuests():
     feature_requests_schema = FeaturesRequestSchema()
@@ -143,3 +146,23 @@ def add_features_resuests():
             "data": FeaturesRequestSchema().dump(feature_request)
         }
     ), 201
+
+
+@app.route("/api/feature_requests/delete/<int:id>/", methods=["DELETE"])
+def delete_features_requests():
+
+    if not id:
+        return jsonify(
+            {"message": "Feature Request id is needed."}
+        ), 400
+
+    feature_request = FeaturesRequest.query.get(id)
+    db.session.delete(feature_request)
+    db.session.commit()
+
+    return jsonify(
+        {
+            "message": "Deleted this feature request.",
+            "data": FeaturesRequestSchema().dump(feature_request)
+        }
+    ), 204
