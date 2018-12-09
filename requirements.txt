@@ -15,7 +15,7 @@ Flask==1.0.2
 Flask-Fixtures==0.3.7
 Flask-SQLAlchemy==2.3.2
 future==0.16.0
-futures==3.2.0
+futures
 gunicorn==19.9.0
 hjson==3.0.1
 idna==2.7
