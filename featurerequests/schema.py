@@ -1,6 +1,7 @@
 from marshmallow import Schema, fields, validate
 from featurerequests.utils import check_future_date
 
+
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     first_name = fields.Str(dump_only=True)
@@ -14,6 +15,7 @@ class ClientsSchema(Schema):
 class ProductAreaSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str(dump_only=True)
+
 
 class FeaturesRequestSchema(Schema):
     id = fields.Int(dump_only=True)

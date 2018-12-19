@@ -170,7 +170,7 @@ def delete_features_requests(id):
     # db.session.delete(feature_request)   
     
 
-    feature_request = FeaturesRequest.query.filter_by(id="")
+    feature_request = FeaturesRequest.query.filter_by(id="id")
     # if not feature_request:
     #     return jsonify(
     #         {"message": "Feature Request could not be found."}

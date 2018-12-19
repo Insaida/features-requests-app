@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>      
+    <title>
         {% block title %}Feature Requests{% endblock title %}
     </title>
 
 
     {% block css %}
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous", rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous" , rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,25 +24,36 @@
     <![endif]-->
     {% endblock css %}
 </head>
+
 <body>
     <div class="container width: 750px">
         <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-tabs ">
-                    <li role="presentation">
-                        <a data-toggle="modal" data-target="#add_feature_requests">Request a feature</a>
-                      </li>
-                    <li role="presentation">
-                        <a href="https://github.com/insaida/features-requests-app" target="_blank">github repo</a>
-                      </li>
-                </ul>
-            </nav>
 
-            <h3 class="text-light bg-dark">Feature Requests</h3>
+
+
+            <div>
+                <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">BriteCore</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li role="presentation">
+                                <a data-toggle="modal" data-target="#add_feature_requests">Request a feature</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="https://github.com/insaida/features-requests-app" target="_blank">github repo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <h3 class="text-light bg-dark">BriteCore Feature Requests App</h3>
+            </div>
         </div>
         {% block content %}
-            {% endblock content %}
-    </div>    
+        {% endblock content %}
+    </div>
 
     {% block script %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -51,5 +64,5 @@
 
     {% endblock script%}
 </body>
-</html>
 
+</html>

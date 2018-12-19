@@ -8,6 +8,7 @@ Click==7.0
 configparser==3.5.0
 dateutils==0.6.6
 docutils==0.14
+dotenv==0.0.5
 durationpy==0.5
 enum34==1.1.6
 flake8==3.6.0
@@ -15,7 +16,7 @@ Flask==1.0.2
 Flask-Fixtures==0.3.7
 Flask-SQLAlchemy==2.3.2
 future==0.16.0
-futures
+futures==3.2.0
 gunicorn==19.9.0
 hjson==3.0.1
 idna==2.7
