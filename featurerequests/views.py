@@ -1,9 +1,10 @@
-from flask import jsonify, render_template, request
+from flask import jsonify, render_template, request, flash, redirect, url_for
 
 from featurerequests import app
 from featurerequests.models import User, Client, FeaturesRequest, ProductArea, db
 
-from featurerequests.schema import ClientsSchema, FeaturesRequestSchema, ProductAreaSchema, UserSchema
+from featurerequests.schema import ClientsSchema, FeaturesRequestSchema
+from featurerequests.schema import ProductAreaSchema, UserSchema
 
 from featurerequests.utils import fix_client_priorities
 
@@ -74,7 +75,7 @@ def feature_requests_get_method():
 
 @app.route('/api/feature_requests/<int:id>/', methods=('POST',))
 def fetch_feature_request_by_id(id=None):
-    """Add/update a feature request."""
+    """update a feature request."""
     if not id:
         return jsonify(
             {"message": "Feature Request id is needed."}
@@ -122,12 +123,14 @@ def fetch_feature_request_by_id(id=None):
 
 @app.route("/api/feature_requests/add/", methods=["POST"])
 def add_features_resuests():
+    """Add features request
+"""
     feature_requests_schema = FeaturesRequestSchema()
     json_data = request.get_json()
 
     if not json_data:
-        return jsonify({'message': 'Bad Request, please provide input data'}), 400
-    # Validate and deserialize input
+        return jsonify({'message': 'Bad Request, please provide some real input data'}), 400
+    # Validate and then deserialize input
     data, errors = feature_requests_schema.load(json_data)
 
     if errors:
@@ -149,20 +152,40 @@ def add_features_resuests():
 
 
 @app.route("/api/feature_requests/delete/<int:id>/", methods=["DELETE"])
-def delete_features_requests():
+def delete_features_requests(id):
 
+    # adele = fetch_feature_request_by_id()
+
+    # db.session.delete(adele)
+    # db.session.commit()
+
+    """Delete a feature request."""
     if not id:
         return jsonify(
             {"message": "Feature Request id is needed."}
-        ), 400
+            ), 400
 
-    feature_request = FeaturesRequest.query.get(id)
-    db.session.delete(feature_request)
-    db.session.commit()
+    # json_data = request.get_json()
+    # feature_request = FeaturesRequest.query.get(id)
+    # db.session.delete(feature_request)   
+    
 
-    return jsonify(
-        {
-            "message": "Deleted this feature request.",
-            "data": FeaturesRequestSchema().dump(feature_request)
-        }
-    ), 204
+    feature_request = FeaturesRequest.query.filter_by(id="")
+    # if not feature_request:
+    #     return jsonify(
+    #         {"message": "Feature Request could not be found."}
+    #         ), 400
+    for fr in feature_request:
+        db.session.delete(fr)
+        db.session.commit()
+
+    # return jsonify(
+    #     {
+    #         "message": "Deleted this feature request.",
+    #         "data": FeaturesRequestSchema().dump(feature_request)
+    #     }
+    # ), 201
+
+    flash('Record was deleted successfully ')
+    # return redirect(url_for('show_all'))
+    return render_template('index.html')
