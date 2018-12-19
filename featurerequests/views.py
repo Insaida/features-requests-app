@@ -179,13 +179,13 @@ def delete_features_requests(id):
         db.session.delete(fr)
         db.session.commit()
 
-    # return jsonify(
-    #     {
-    #         "message": "Deleted this feature request.",
-    #         "data": FeaturesRequestSchema().dump(feature_request)
-    #     }
-    # ), 201
+    return jsonify(
+        {
+            "message": "Deleted this feature request.",
+            "data": FeaturesRequestSchema().dump(feature_request)
+        }
+    ), 201
 
-    flash('Record was deleted successfully ')
-    # return redirect(url_for('show_all'))
-    return render_template('index.html')
+    # flash('Record was deleted successfully ')
+    # # return redirect(url_for('show_all'))
+    # return render_template('index.html')
