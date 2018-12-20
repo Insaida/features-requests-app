@@ -60,7 +60,17 @@ Currently, the app is deployed to heroku.
 Alternatively, other deployment options exist.
 The app could be deployed using Zappa and AWS Lambda
 
-Then for local deployment, there is the option of using Docker. by using the command to build your docker image:
+**Deploy With Zappa and AWS lambda**
+
+``` bash
+zappa init
+```
+
+``` bash
+zappa deploy dev
+```
+
+Then for **local deployment**, there is the option of using Docker. by using the command to build your docker image:
 
 ``` bash
 docker-compose up --build
@@ -72,8 +82,8 @@ then run the following to run the image:
 docker run -it -p 500:500 features-request-app_web
 ```
 
-**Deploy with docker-machine
-**
+**Deploy with docker-machine**
+
 Have your AWS Credentials already configured then run the following command to create a virtual machine:
 
 ``` bash 
@@ -108,12 +118,13 @@ a CI/CD process, I have you in mind and have plans for CircleCI integration.
 
 ## Dev Approach
 
+Design Architeture
 
 ##Built With
 
-Flask - The web framework used
-AWS (S3, Lambda) - Hosting Platform
-Gunicorn - Python WSGI HTTP Server for UNIX
-Knockout.js - Javascript framework
-Jquery - Javascript framework
-CircleCI - Continuous Deployment
+* Flask - The web framework used
+* AWS (S3, Lambda) - Hosting Platform
+* Gunicorn - Python WSGI HTTP Server for UNIX
+* Knockout.js - Javascript framework
+* Jquery - Javascript framework
+* CircleCI - Continuous Deployment
