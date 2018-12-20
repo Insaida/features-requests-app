@@ -120,7 +120,7 @@ a CI/CD process, I have you in mind and have plans for CircleCI integration.
 
 Design Architeture
 
-##Built With
+#Built With
 
 * Flask - The web framework used
 * AWS (S3, Lambda) - Hosting Platform
