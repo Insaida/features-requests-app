@@ -63,16 +63,57 @@ The app could be deployed using Zappa and AWS Lambda
 Then for local deployment, there is the option of using Docker. by using the command to build your docker image:
 
 ``` bash
-docker build -t features-request-app/featuresrequest
+docker-compose up --build
 ```
 
 then run the following to run the image:
 
 ``` bash
-docker run -it features-request-app/featuresrequest
+docker run -it -p 500:500 features-request-app_web
 ```
+
+**Deploy with docker-machine
+**
+Have your AWS Credentials already configured then run the following command to create a virtual machine:
+
+``` bash 
+docker-machine create --driver amazonec2 britecoreapp
+```
+You set the environment variables that belong to the virtual machine by issuing the following command:
+
+``` bash
+eval $(docker-machine env britecoreapp)
+```
+
+the command to build your docker image:
+
+``` bash
+docker-compose up --build
+```
+
+then run the following to run the image:
+
+``` bash
+docker run -d -p 500:500 features-request-app_web
+```
+
+```bash
+docker-machine ip hobbyprojects
+```
+
+
 
 If you intend to deploy to Digital Ocean or AWS EC2 service, and want to implement
 a CI/CD process, I have you in mind and have plans for CircleCI integration.
 
 ## Dev Approach
+
+
+##Built With
+
+Flask - The web framework used
+AWS (S3, Lambda) - Hosting Platform
+Gunicorn - Python WSGI HTTP Server for UNIX
+Knockout.js - Javascript framework
+Jquery - Javascript framework
+CircleCI - Continuous Deployment
