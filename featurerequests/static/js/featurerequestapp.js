@@ -85,8 +85,33 @@ function FeatureRequestViewModel() {
         $('#edit_fr').modal('show');
     }
 
+
     self.updateRequest = function(form_element){
         var data = $('#edit_fr_form').serializeArray().map(function(x){this[x.name] = x.value; return this;}.bind({}))[0];
+
+        $.ajax(
+            '/api/feature_requests/' + data.id + '/',
+            {
+                contentType: 'application/json;',
+                method: 'POST',
+                data: JSON.stringify(data),
+                success: function (new_data) {
+                    $('#edit_fr').modal('hide');
+                    var oldLocation = ko.utils.arrayFirst(self.featureRequests(), function (item) {
+                        return item.id() == data.id;
+                    });
+                    self.featureRequests.replace(oldLocation, new FeatureRequestModel(ko.toJS(new_data['data'][0])));
+                    alert(new_data['message']);
+                },
+                error: function (errors) {
+                    self.errors(errors.responseJSON.errors);
+                }
+            }
+        );
+    };
+
+    self.deleteRequest = function(form_element){
+        var data = $('#delete_features_request_form').serializeArray().map(function(x){this[x.name] = x.value; return this;}.bind({}))[0];
 
         $.ajax(
             '/api/feature_requests/' + data.id + '/',

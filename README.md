@@ -86,9 +86,10 @@ docker run -it -p 500:500 features-request-app_web
 
 Have your AWS Credentials already configured then run the following command to create a virtual machine:
 
-``` bash 
+``` bash
 docker-machine create --driver amazonec2 britecoreapp
 ```
+
 You set the environment variables that belong to the virtual machine by issuing the following command:
 
 ``` bash
@@ -111,8 +112,6 @@ docker run -d -p 500:500 features-request-app_web
 docker-machine ip hobbyprojects
 ```
 
-
-
 If you intend to deploy to Digital Ocean or AWS EC2 service, and want to implement
 a CI/CD process, I have you in mind and have plans for CircleCI integration.
 
@@ -120,7 +119,7 @@ a CI/CD process, I have you in mind and have plans for CircleCI integration.
 
 Design Architeture
 
-#Built With
+**Built With**
 
 * Flask - The web framework used
 * AWS (S3, Lambda) - Hosting Platform

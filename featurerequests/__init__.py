@@ -1,8 +1,6 @@
 import os
-from os.path import dirname
 from flask import Flask
 from dotenv import load_dotenv
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,7 +39,7 @@ read_env_variable()
 
 app = Flask(__name__)
 env = get_env_variable(
-    'SETTINGS_MODULE', 'featurerequests.settings.DevelopmentConfiguration')
+    'SETTINGS_MODULE', 'featurerequests.settings.Config')
 app.config.from_object(env)
 app.config['ENV'] = env
 
