@@ -42,3 +42,6 @@ if __name__ == "__main__":
             fixture_path = os.path.join(fixture_dir_path, fixture)
             with open(fixture_path, 'r') as infile:
                 load_fixtures(models.db, json.loads(infile.read()))
+
+# To-Do add arguments for running tests.
+# in the format `python manage.py test`

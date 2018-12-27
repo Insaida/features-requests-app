@@ -15,12 +15,14 @@
       Client Priority <span data-bind="text: client_priority"></span>
     </div>
     <div>
-      <a class="btn btn-success pull-right" data-toggle="modal" data-bind="click: $parent.setRequest.bind($root)">
+      <a class="btn btn-success pull-right" data-toggle="modal" data-bind="click: $parent.setRequest.bind($data.id)">
       View
       </a>
-      <a class="btn btn-warning pull-right" data-toggle="modal" data-bind="click: $parent.setRequest.bind()">
-      Delete
-      </a>
+      <div>
+          <a class="btn btn-warning pull-right"  data-bind="click: $parent.updateRequest.bind($root)">
+              Delete
+              </a>
+      </div>
     </div>
     
   </div>
@@ -200,7 +202,7 @@
       </div>
 
       <div class="modal-body">
-        <form data-bind="submit: deleteRequest, with: $data.feature_request" id="#delete_features_request_form">
+        <form data-bind="submit: updateRequest, with: $data.feature_request" id="#delete_features_request_form">
           <div class="modal-footer">
             <button class="btn btn-primary" type="submit">Delete request</button>
             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>

@@ -12,15 +12,7 @@ from datetime import datetime
 
 
 def _build_feature_request_data(feature_request, data):
-    for field in [
-        "title",
-        "user_id",
-        "client_id",
-        "description",
-        "target_date",
-        "client_priority",
-        "product_area_id"
-    ]:
+    for field in ["title", "user_id", "client_id", "description", "target_date", "client_priority", "product_area_id"]:
         setattr(
             feature_request,
             field,
@@ -115,7 +107,7 @@ def fetch_feature_request_by_id(id=None):
 
     return jsonify(
         {
-            "message": "Updated feature request.",
+            "message": "Updated new feature request." + feature_request.count(),
             "data": FeaturesRequestSchema().dump(feature_request)
         }
     ), 200
@@ -155,20 +147,17 @@ def add_features_resuests():
 def delete_features_requests(id):
 
     # adele = fetch_feature_request_by_id()
-
     # db.session.delete(adele)
     # db.session.commit()
-
     """Delete a feature request."""
     if not id:
         return jsonify(
             {"message": "Feature Request id is needed."}
-            ), 400
+        ), 400
 
     # json_data = request.get_json()
     # feature_request = FeaturesRequest.query.get(id)
-    # db.session.delete(feature_request)   
-    
+    # db.session.delete(feature_request)
 
     feature_request = FeaturesRequest.query.filter_by(id="id")
     # if not feature_request:
